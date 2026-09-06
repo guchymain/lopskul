@@ -6,6 +6,7 @@ export const tracks = [
     subtitle: 'A 16-week guided path from spreadsheets to a portfolio hiring managers trust.',
     category: 'Data & AI',
     heroStat: '78% job-outcome rate within 6 months of graduating',
+    image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=800&q=80',
     courseIds: ['c-1', 'c-2'],
     phases: [
       { id: 'p-1', title: 'Foundations', courseIds: ['c-2'] },
@@ -37,6 +38,7 @@ export const tracks = [
     subtitle: 'A 12-week studio-style program ending in a reviewed, shippable portfolio.',
     category: 'Design',
     heroStat: '65% portfolio-ready rate at graduation',
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80',
     courseIds: ['c-3', 'c-4'],
     phases: [
       { id: 'p-1', title: 'Craft Foundations', courseIds: ['c-4'] },
@@ -64,6 +66,7 @@ export const tracks = [
     subtitle: 'A 20-week intensive covering backend systems, review craft, and interview readiness.',
     category: 'Engineering',
     heroStat: '81% land a technical interview within 90 days of graduating',
+    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
     courseIds: ['c-5', 'c-6'],
     phases: [
       { id: 'p-1', title: 'Backend Foundations', courseIds: ['c-5'] },

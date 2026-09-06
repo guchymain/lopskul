@@ -1,5 +1,27 @@
+const SAMPLE_VIDEOS = [
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4',
+]
+
+let videoCursor = 0
+
 function lesson(id, title, durationMin, type = 'video', freePreview = false) {
-  return { id, title, durationMin, type, freePreview }
+  return {
+    id,
+    title,
+    durationMin,
+    type,
+    freePreview,
+    videoUrl: type === 'video' ? SAMPLE_VIDEOS[videoCursor++ % SAMPLE_VIDEOS.length] : undefined,
+  }
 }
 
 export const courses = [
@@ -21,6 +43,7 @@ export const courses = [
     studentsCount: 41200,
     instructorId: 'ins-1',
     accentIcon: 'chart',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
     tags: ['SQL', 'Python', 'Dashboards'],
     outcomeStat: '78% of finishers report using these skills at work within 60 days',
     whatYoullLearn: [
@@ -85,6 +108,7 @@ export const courses = [
     studentsCount: 88300,
     instructorId: 'ins-1',
     accentIcon: 'spark',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80',
     tags: ['AI', 'Productivity'],
     outcomeStat: '4 in 5 learners use these workflows weekly after completion',
     whatYoullLearn: [
@@ -131,6 +155,7 @@ export const courses = [
     studentsCount: 22900,
     instructorId: 'ins-2',
     accentIcon: 'layers',
+    image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80',
     tags: ['Figma', 'Design Systems'],
     outcomeStat: '65% of learners ship a design system component within 2 weeks',
     whatYoullLearn: [
@@ -176,6 +201,7 @@ export const courses = [
     studentsCount: 8100,
     instructorId: 'ins-2',
     accentIcon: 'motion',
+    image: 'https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?auto=format&fit=crop&w=800&q=80',
     tags: ['Motion', 'Prototyping'],
     outcomeStat: 'Learners cut prototype iteration time by 40% on average',
     whatYoullLearn: ['Timing and easing that reads as "quality"', 'When not to animate'],
@@ -209,6 +235,7 @@ export const courses = [
     studentsCount: 19700,
     instructorId: 'ins-3',
     accentIcon: 'server',
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80',
     tags: ['Node.js', 'APIs', 'System Design'],
     outcomeStat: '81% of learners land a technical interview within 90 days',
     whatYoullLearn: [
@@ -254,6 +281,7 @@ export const courses = [
     studentsCount: 14300,
     instructorId: 'ins-3',
     accentIcon: 'check',
+    image: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=800&q=80',
     tags: ['Code Review', 'Team Practice'],
     outcomeStat: 'Teams report 30% fewer post-merge bugs after adoption',
     whatYoullLearn: ['A repeatable review checklist', 'How to disagree without derailing'],
@@ -287,6 +315,7 @@ export const courses = [
     studentsCount: 11200,
     instructorId: 'ins-4',
     accentIcon: 'trend',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
     tags: ['Analytics', 'Paid Acquisition'],
     outcomeStat: '3.2x average campaign ROI reported by learners',
     whatYoullLearn: ['Set up attribution you can trust', 'Read a funnel report without lying to yourself'],
@@ -320,6 +349,7 @@ export const courses = [
     studentsCount: 15600,
     instructorId: 'ins-4',
     accentIcon: 'compass',
+    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80',
     tags: ['Startups', 'Validation'],
     outcomeStat: '43% of finishers reach their first paying customer within 90 days',
     whatYoullLearn: ['Validate demand before building', 'Price your first offer with confidence'],

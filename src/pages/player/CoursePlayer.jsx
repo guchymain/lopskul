@@ -77,7 +77,7 @@ export function CoursePlayer() {
       </aside>
 
       <main className="flex flex-col gap-6 p-4 sm:p-6 min-w-0">
-        <VideoPlayer lessonTitle={lesson.title} onMarkComplete={handleMarkComplete} completed={completed} />
+        <VideoPlayer lessonTitle={lesson.title} videoUrl={lesson.videoUrl} onMarkComplete={handleMarkComplete} completed={completed} />
         <div>
           <h1 className="text-heading-2 font-display font-semibold text-ink">{lesson.title}</h1>
           <p className="text-body-sm text-ink-soft mt-1">{lesson.durationMin} minutes · {lesson.type}</p>

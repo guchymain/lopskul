@@ -77,6 +77,9 @@ export function TrackDetail() {
 
         <div className="lg:sticky lg:top-24 h-fit">
           <Card className="p-5 flex flex-col gap-4">
+            <div className="relative h-36 rounded-card overflow-hidden">
+              <img src={track.image} alt={track.title} loading="lazy" className="h-full w-full object-cover" />
+            </div>
             <div>
               <p className="text-display-lg font-display font-semibold text-ink">${track.price.deposit}</p>
               <p className="text-body-sm text-ink-soft">deposit to reserve your seat · ${track.price.full} total</p>

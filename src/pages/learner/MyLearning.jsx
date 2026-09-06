@@ -55,8 +55,8 @@ export function MyLearning() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map(({ course, percent, progress }) => (
             <Card key={course.id} className="p-4 flex flex-col gap-3">
-              <div className="h-24 rounded-card bg-surface-2 flex items-center justify-center text-ink-soft">
-                <Icon name={course.accentIcon} size={26} />
+              <div className="h-24 rounded-card bg-surface-2 overflow-hidden">
+                <img src={course.image} alt={course.title} loading="lazy" className="h-full w-full object-cover" />
               </div>
               <h3 className="text-body font-semibold text-ink leading-snug">{course.title}</h3>
               <ProgressBar percent={percent} label={percent === 100 ? 'Completed' : 'Progress'} />

@@ -7,8 +7,11 @@ import { ProofStrip } from '../../components/proof/ProofStrip.jsx'
 import { TrackCard } from '../../components/track/TrackCard.jsx'
 import { CourseCard } from '../../components/course/CourseCard.jsx'
 import { tracks } from '../../data/fixtures/tracks.js'
-import { courses } from '../../data/fixtures/courses.js'
+import { courses, getCourseById } from '../../data/fixtures/courses.js'
 import { getInstructorById } from '../../data/fixtures/instructors.js'
+
+const STORY_VIDEO =
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4'
 
 const platformStats = [
   { label: 'Learners worldwide', value: '210K+' },
@@ -20,7 +23,10 @@ const platformStats = [
 export function Landing() {
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const [heroPlaying, setHeroPlaying] = useState(false)
+  const [storyPlaying, setStoryPlaying] = useState(false)
   const featuredInstructor = getInstructorById('ins-3')
+  const featuredCourse = getCourseById('c-5')
 
   useEffect(() => {
     document.title = 'Ledger — Learn. Prove it. Advance.'
@@ -67,18 +73,33 @@ export function Landing() {
             <p className="text-body-sm text-ink-soft">Joined by learners from 140+ countries</p>
           </div>
         </div>
-        <div className="rounded-card bg-ink text-paper p-6 flex flex-col gap-4 aspect-[4/3] justify-center">
-          <button
-            className="h-14 w-14 rounded-full bg-paper/10 hover:bg-paper/20 flex items-center justify-center self-center transition-colors"
-            aria-label="Play learner story video"
-          >
-            <Icon name="play" size={24} />
-          </button>
-          <p className="text-body text-center text-paper/90 max-w-xs mx-auto">
-            "I went from customer support to a data analytics role in five months. The proof-of-work portfolio is
-            what got me the interview."
-          </p>
-          <p className="text-body-sm text-center text-paper/60">Grace M. — Track graduate, now Data Analyst</p>
+        <div className="rounded-card overflow-hidden bg-ink text-paper relative aspect-[4/3]">
+          {heroPlaying ? (
+            <video src={STORY_VIDEO} controls autoPlay className="h-full w-full object-cover" />
+          ) : (
+            <button
+              onClick={() => setHeroPlaying(true)}
+              className="absolute inset-0 group text-left"
+              aria-label="Play learner story video"
+            >
+              <img
+                src={courses[0].image}
+                alt=""
+                loading="lazy"
+                className="h-full w-full object-cover opacity-80 transition-opacity group-hover:opacity-90"
+              />
+              <span className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-ink/90 via-ink/30 to-transparent p-6 gap-3">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-paper/90 text-ink transition-transform group-hover:scale-110">
+                  <Icon name="play" size={24} />
+                </span>
+                <p className="text-body text-center text-paper/90 max-w-xs">
+                  "I went from customer support to a data analytics role in five months. The proof-of-work
+                  portfolio is what got me the interview."
+                </p>
+                <p className="text-body-sm text-paper/60">Grace M. — Track graduate, now Data Analyst</p>
+              </span>
+            </button>
+          )}
         </div>
       </section>
 
@@ -113,8 +134,28 @@ export function Landing() {
       {/* Transformation story */}
       <section className="bg-surface-1 border-y border-border">
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 py-20 grid lg:grid-cols-2 gap-10 items-center">
-          <div className="rounded-card bg-surface-0 border border-border aspect-video flex items-center justify-center">
-            <Icon name="play" size={32} className="text-ink-soft" />
+          <div className="rounded-card bg-surface-0 border border-border aspect-video overflow-hidden relative">
+            {storyPlaying ? (
+              <video src={STORY_VIDEO} controls autoPlay className="h-full w-full object-cover" />
+            ) : (
+              <button
+                onClick={() => setStoryPlaying(true)}
+                className="absolute inset-0 group flex items-center justify-center"
+                aria-label="Play featured lesson preview"
+              >
+                <img
+                  src={featuredCourse.image}
+                  alt=""
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+                <span className="absolute inset-0 flex items-center justify-center">
+                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-ink/60 text-paper backdrop-blur transition-transform group-hover:scale-110">
+                    <Icon name="play" size={32} />
+                  </span>
+                </span>
+              </button>
+            )}
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-caption font-semibold uppercase tracking-wide text-accent-strong">
