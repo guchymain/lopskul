@@ -23,8 +23,8 @@ export function InstructorCourses() {
       <div className="flex flex-col gap-3">
         {myCourses.map((course) => (
           <Card key={course.id} className="p-4 flex items-center gap-4">
-            <span className="h-12 w-12 rounded-card bg-surface-2 text-ink-soft flex items-center justify-center shrink-0">
-              <Icon name={course.accentIcon} size={20} />
+            <span className="h-12 w-12 rounded-card bg-surface-2 overflow-hidden shrink-0">
+              <img src={course.image} alt={course.title} loading="lazy" className="h-full w-full object-cover" />
             </span>
             <div className="flex-1 min-w-0">
               <p className="text-body font-semibold text-ink truncate">{course.title}</p>

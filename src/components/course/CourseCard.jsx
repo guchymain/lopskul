@@ -10,8 +10,13 @@ export function CourseCard({ course }) {
   return (
     <Card hoverable className="flex flex-col overflow-hidden group">
       <Link to={`/courses/${course.slug}`} className="flex flex-col h-full focus:outline-none">
-        <div className="h-36 bg-surface-2 flex items-center justify-center text-ink-soft group-hover:text-accent transition-colors">
-          <Icon name={course.accentIcon} size={36} strokeWidth={1.25} />
+        <div className="h-36 bg-surface-2 overflow-hidden">
+          <img
+            src={course.image}
+            alt={course.title}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
         </div>
         <div className="flex flex-col gap-2 p-4 flex-1">
           <div className="flex items-center gap-2 flex-wrap">

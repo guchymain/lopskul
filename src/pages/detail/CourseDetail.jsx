@@ -64,7 +64,10 @@ export function CourseDetail() {
       <div className="grid lg:grid-cols-[1fr_340px] gap-10">
         <div className="flex flex-col gap-10 min-w-0">
           <header className="flex flex-col gap-4">
-            <div className="flex items-center gap-2 flex-wrap">
+            <div className="rounded-card overflow-hidden aspect-video bg-surface-2">
+              <img src={course.image} alt={course.title} loading="lazy" className="h-full w-full object-cover" />
+            </div>
+            <div className="flex items-center gap-2 flex-wrap mt-2">
               <Badge tone="neutral">{course.level}</Badge>
               <Badge tone="neutral">{course.format === 'cohort' ? 'Cohort' : 'Self-paced'}</Badge>
               {course.captionsAvailable && <Badge tone="neutral">Captions</Badge>}

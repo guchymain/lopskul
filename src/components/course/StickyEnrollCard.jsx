@@ -9,8 +9,13 @@ export function StickyEnrollCard({ course, isEnrolled, onToggleWishlist, wishlis
 
   return (
     <Card className="p-5 flex flex-col gap-4 lg:sticky lg:top-24">
-      <div className="h-32 rounded-card bg-surface-2 flex items-center justify-center text-ink-soft">
-        <Icon name="play" size={32} />
+      <div className="relative h-32 rounded-card overflow-hidden bg-ink group">
+        <img src={course.image} alt={course.title} loading="lazy" className="h-full w-full object-cover opacity-90" />
+        <span className="absolute inset-0 flex items-center justify-center">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ink/60 text-paper transition-colors group-hover:bg-ink/80">
+            <Icon name="play" size={18} />
+          </span>
+        </span>
       </div>
       <p className="text-display-lg font-display font-semibold text-ink">
         {course.price === 0 ? 'Free' : `$${course.price}`}
